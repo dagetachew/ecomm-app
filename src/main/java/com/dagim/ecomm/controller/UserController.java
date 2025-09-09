@@ -1,23 +1,49 @@
 package com.dagim.ecomm.controller;
 
-import com.dagim.ecomm.model.ProductTbl;
+import com.dagim.ecomm.dto.UserDto;
+import com.dagim.ecomm.dto.UserLoginDto;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
 
 @Controller
 @RequestMapping(path = {"/user"})
 public class UserController {
 
     @GetMapping(path = {"", "/"})
-    public String listProducts(Model model) {
+    public String signupUser(Model model) {
 
-//        List<ProductTbl> productTblList = productService.findAllProducts();
-//        model.addAttribute("products", productTblList);
+        UserDto userDto = new UserDto();
+        model.addAttribute("userDto", userDto);
         return "user/signup";
+    }
+
+    @PostMapping(path = {"", "/"})
+    public String createUser(@Valid @ModelAttribute UserDto userDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "user/signup";
+        }
+        return "redirect:user/login";
+    }
+
+    @GetMapping("/login")
+    public String loginUser(Model model) {
+        UserLoginDto userLoginDto = new UserLoginDto();
+        model.addAttribute("userLoginDto", userLoginDto);
+        return "user/login";
+    }
+
+    @PostMapping("/login")
+    public String loginUser(@Valid @ModelAttribute UserLoginDto userLoginDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors())
+            return "user/login";
+        else
+            return "redirect:/products";
     }
 
 }

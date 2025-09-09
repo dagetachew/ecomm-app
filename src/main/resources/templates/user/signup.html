@@ -16,6 +16,10 @@
     <!-- Header-->
     <header class="bg-dark py-1">
         <div class="container px-2 px-lg-3 my-3">
+            <div class="container px-4 px-lg-5 text-white text-white-50">
+                <a class="navbar-brand" href="/"><h4> Ez Shop Electronics </h4> </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            </div>
             <div class="text-center text-white">
                 <h1 class="display-4 fw-bolder">Shop in style</h1>
                 <p class="lead fw-normal text-white-50 mb-0">Your go to market place for the latest electronics gadgets ...</p>
@@ -29,34 +33,38 @@
                     <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
                         <div class="card-body p-4 p-sm-5">
                             <h5 class="card-title text-center mb-5 fw-bold text-uppercase fs-5">Create Profile</h5>
-                            <form>
+                            <form method="post" th:object="${userDto}">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInputFirstName" required autofocus placeholder="First Name">
+                                    <input type="text" th:field="${userDto.firstName}" class="form-control" id="floatingInputFirstName" required autofocus placeholder="First Name">
                                     <label for="floatingInputFirstName">First Name:</label>
                                 </div>
+                                <p th:if="${#fields.hasErrors('firstName')}" th:errorclass="text-danger" th:errors="${userDto.firstName}"></p>
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInputLastName" required placeholder="Last Name">
+                                    <input type="text" th:field="${userDto.lastName}" class="form-control" id="floatingInputLastName" required placeholder="Last Name">
                                     <label for="floatingInputLastName">Last Name:</label>
                                 </div>
+                                <p th:if="${#fields.hasErrors('lastName')}" th:errorclass="text-danger" th:errors="${userDto.lastName}"></p>
                                 <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="floatingInputEmail" required placeholder="name@example.com">
+                                    <input type="email" th:field="${userDto.email}" class="form-control" id="floatingInputEmail" required placeholder="name@example.com">
                                     <label for="floatingInputEmail">Email:</label>
                                 </div>
+                                <p th:if="${#fields.hasErrors('email')}" th:errorclass="text-danger" th:errors="${userDto.email}"></p>
                                 <div class="input-group mb-3">
                                     <div class="form-floating flex-grow-1">
-                                        <input type="password" class="form-control" id="passwordTxt" required placeholder="Password">
+                                        <input type="password" th:field="${userDto.password}" class="form-control" id="passwordTxt" required placeholder="Password">
                                         <label for="passwordTxt">Password:</label>
                                     </div>
                                     <button class="btn btn-outline-secondary" type="button" id="togglePassword" onclick="showPasswordText()">
                                         <i class="bi bi-eye"></i> <!-- Bootstrap Icon for eye -->
                                     </button>
                                 </div>
+                                <p th:if="${#fields.hasErrors('password')}" th:errorclass="text-danger" th:errors="${userDto.password}"></p>
                                 <div class="d-grid mb-2">
                                     <div class="text-center">
                                         <button class="col-md-9 btn btn-secondary btn-login fw-bold" type="submit">Register</button>
                                     </div>
                                 </div>
-                                <a class="d-block text-center mt-2 small" href="#">Have an account? Sign In</a>
+                                <a class="d-block text-center mt-2 small" href="/user/login">Have an account? Sign In</a>
                             </form>
                         </div>
                     </div>

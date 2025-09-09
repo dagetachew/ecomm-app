@@ -5,16 +5,11 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
-public class UserDto {
+public class UserLoginDto {
 
-    @NotEmpty(message = "First Name is required")
-    private String firstName;
-    @NotEmpty(message = "Last Name is required")
-    private String lastName;
     @NotEmpty(message = "Email is required")
     private String email;
     @NotEmpty(message = "Password is required")
-    @Size(min = 6, max = 15, message = "Password length must be min 6 or max 15 characters")
     private String password;
 
 }
