@@ -1,0 +1,23 @@
+2025-09-08 13:03:14.807717-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PRODUCT" not found; SQL statement:
+INSERT INTO PRODUCT (PRODUCT_ID, PRICE, CREATE_DATE , BRAND, CATEGORY, DESCRIPTION, IMAGE_FILE_NAME, NAME) VALUES
+(1, 499.99, '2025-09-01 10:00:00', 'TechGiant', 'Laptop', 'Powerful laptop for everyday use and light gaming.', 'laptop_tg1.jpg', 'TechGiant ProBook 15'),
+(2, 129.99, '2025-09-01 10:05:00', 'AudioMaster', 'Headphones', 'Noise-cancelling over-ear headphones with deep bass.', 'headphones_am1.jpg', 'AudioMaster SonicFlow'),
+(3, 79.99, '2025-09-01 10:10:00', 'SmartHome', 'Smart Speaker', 'Voice-activated smart speaker with integrated AI assistant.', 'speaker_sh1.jpg', 'SmartHome Echo Mini'),
+(4, 899.00, '2025-09-02 11:00:00', 'PhotoPro', 'Camera', 'Professional DSLR camera with 24MP sensor.', 'camera_pp1.jpg', 'PhotoPro X-Series Pro'),
+(5, 29.99, '2025-09-02 11:05:00', 'PowerUp', 'Power Bank', 'Portable power bank with 10000mAh capacity.', 'powerbank_pu1.jpg', 'PowerUp ChargeMax'),
+(6, 69.99, '2025-09-02 11:10:00', 'GameZone', 'Gaming Mouse', 'Ergonomic gaming mouse with customizable RGB lighting.', 'mouse_gz1.jpg', 'GameZone Apex Pro'),
+(7, 199.99, '2025-09-03 12:00:00', 'ScreenView', 'Monitor', '27-inch IPS monitor with Full HD resolution.', 'monitor_sv1.jpg', 'ScreenView HD27'),
+(8, 39.99, '2025-09-03 12:05:00', 'ConnectEase', 'Router', 'High-speed Wi-Fi 6 router for seamless connectivity.', 'router_ce1.jpg', 'ConnectEase UltraLink'),
+(9, 149.99, '2025-09-03 12:10:00', 'WearTech', 'Smartwatch', 'Fitness tracking smartwatch with heart rate monitor.', 'smartwatch_wt1.jpg', 'WearTech Pulse'),
+(10, 24.99, '2025-09-04 13:00:00', 'StorageSolutions', 'USB Drive', '128GB USB 3.0 flash drive for fast data transfer.', 'usb_ss1.jpg', 'StorageSolutions FlashDrive 128'),
+(11, 799.99, '2025-09-04 13:05:00', 'HomeTheater', 'Soundbar', 'Premium soundbar with wireless subwoofer for immersive audio.', 'soundbar_ht1.jpg', 'HomeTheater Cinematic Sound'),
+(12, 19.99, '2025-09-04 13:10:00', 'InputEase', 'Keyboard', 'Wireless ergonomic keyboard with quiet keys.', 'keyboard_ie1.jpg', 'InputEase ErgoType'),
+(13, 119.99, '2025-09-05 14:00:00', 'StreamBox', 'Streaming Device', '4K Ultra HD streaming device with voice remote.', 'streaming_sb1.jpg', 'StreamBox Ultra'),
+(14, 59.99, '2025-09-05 14:05:00', 'PrintMaster', 'Printer', 'Compact inkjet printer with wireless capabilities.', 'printer_pm1.jpg', 'PrintMaster MiniJet'),
+(15, 9.99, '2025-09-05 14:10:00', 'CableConnect', 'HDMI Cable', 'High-speed 4K HDMI cable.', 'hdmi_cc1.jpg', 'CableConnect ProLink'),
+(16, 349.99, '2025-09-06 15:00:00', 'GamingPro', 'Gaming Console', 'Next-gen gaming console with advanced graphics.', 'console_gp1.jpg', 'GamingPro Xtreme'),
+(17, 49.99, '2025-09-06 15:05:00', 'SecurityCam', 'Security Camera', 'Wireless indoor security camera with night vision.', 'camera_sc1.jpg', 'SecurityCam Guardian'),
+(18, 14.99, '2025-09-06 15:10:00', 'ChargeFast', 'Charger', 'Fast charging wall adapter with multiple ports.', 'charger_cf1.jpg', 'ChargeFast MultiPort'),
+(19, 299.99, '2025-09-07 16:00:00', 'DroneFly', 'Drone', 'Beginner-friendly drone with HD camera.', 'drone_df1.jpg', 'DroneFly Explorer'),
+(20, 89.99, '2025-09-07 16:05:00', 'SmartLight', 'Smart Lighting', 'Smart LED bulb kit with color changing capabilities.', 'light_sl1.jpg', 'SmartLight Ambiance Kit') [42102-232]
