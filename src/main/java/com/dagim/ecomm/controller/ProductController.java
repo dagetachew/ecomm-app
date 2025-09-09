@@ -1,6 +1,6 @@
 package com.dagim.ecomm.controller;
 
-import com.dagim.ecomm.model.ProductTbl;
+import com.dagim.ecomm.model.ProductEntity;
 import com.dagim.ecomm.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,8 +20,8 @@ public class ProductController {
     @GetMapping(path = {"", "/"})
     public String listProducts(Model model) {
 
-        List<ProductTbl> productTblList = productService.findAllProducts();
-        model.addAttribute("products", productTblList);
+        List<ProductEntity> productEntityList = productService.findAllProducts();
+        model.addAttribute("products", productEntityList);
         return "products/index";
     }
 }

@@ -8,11 +8,11 @@ import java.util.Date;
 @Data
 @Entity
 @Table
-public class OrderTbl {
+public class OrderEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String orderId;
+    private int orderId;
     private String userId;
     private String productId;
     private String productName;

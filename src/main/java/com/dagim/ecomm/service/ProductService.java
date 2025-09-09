@@ -1,6 +1,6 @@
 package com.dagim.ecomm.service;
 
-import com.dagim.ecomm.model.ProductTbl;
+import com.dagim.ecomm.model.ProductEntity;
 import com.dagim.ecomm.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    public List<ProductTbl> findAllProducts() {
+    public List<ProductEntity> findAllProducts() {
         return productRepository.findAll();
     }
 }

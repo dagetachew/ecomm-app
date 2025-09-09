@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <title>Account Login</title>
@@ -45,7 +45,7 @@
                                             <label for="passwordTxt">Password:</label>
                                             <p th:if="${#fields.hasErrors('password')}" th:errorclass="text-danger" th:errors="${userLoginDto.password}"></p>
                                         </div>
-                                        <button class="btn btn-outline-secondary" type="button" id="togglePassword" onclick="showPasswordText()">
+                                        <button class="btn btn-outline-secondary" type="button" id="togglePassword" >
                                             <i class="bi bi-eye"></i> <!-- Bootstrap Icon for eye -->
                                         </button>
                                     </div>

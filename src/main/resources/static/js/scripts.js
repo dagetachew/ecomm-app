@@ -6,16 +6,15 @@
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
 
-function showPasswordText(){
-    const togglePassword = document.getElementById('togglePassword');
+document.addEventListener('DOMContentLoaded', function() {
     const passwordInput = document.getElementById('passwordTxt');
-    // Toggle the type attribute
-    togglePassword.addEventListener('click', function () {
-    // Toggle the type attribute
-    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-    passwordInput.setAttribute('type', type);
-    // Toggle the icon (if using Bootstrap Icons)
+    const togglePassword = document.getElementById('togglePassword');
+
+    togglePassword.addEventListener('click', function() {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+// Toggle the icon (if using Bootstrap Icons)
     this.querySelector('i').classList.toggle('bi-eye');
     this.querySelector('i').classList.toggle('bi-eye-slash');
     });
-}
+});
