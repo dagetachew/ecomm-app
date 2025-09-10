@@ -1,0 +1,3 @@
+2025-09-09 18:06:06.335760-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "delete [*]* FROM USER_ENTITY"; expected "identifier"; SQL statement:
+delete * FROM USER_ENTITY [42001-232]
