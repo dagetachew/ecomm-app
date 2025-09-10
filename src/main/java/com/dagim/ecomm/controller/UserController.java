@@ -2,7 +2,6 @@ package com.dagim.ecomm.controller;
 
 import com.dagim.ecomm.dto.UserDto;
 import com.dagim.ecomm.dto.UserLoginDto;
-import com.dagim.ecomm.model.UserEntity;
 import com.dagim.ecomm.service.UserService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -14,8 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.Base64;
 
 @Slf4j
 @Controller
@@ -37,7 +34,7 @@ public class UserController {
     public String createUser(@Valid @ModelAttribute UserDto userDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "user/signup";
-        }else {
+        } else {
             userService.createUserProfile(userDto);
             return "redirect:user/login";
         }
@@ -51,15 +48,18 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String loginUser(@Valid @ModelAttribute UserLoginDto userLoginDto, BindingResult bindingResult) {
+    public String loginUser(@Valid @ModelAttribute UserLoginDto userLoginDto, Model model, BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return "user/login";
-        else{
-            UserEntity userEntity = userService.findUserByEmail(userLoginDto.getEmail());
-            String decodedPwrdByte = new String(Base64.getDecoder().decode(userEntity.getPassword()));
-            if (decodedPwrdByte.equals(userLoginDto.getPassword()))
+        else {
+            if (userService.validateUserCredential(userLoginDto)) {
                 log.info("Login Succeeded");
-            return "redirect:/products";
+                return "redirect:/products";
+            }
+            else {
+                bindingResult.rejectValue("password", "wrongCredential", "Either your email or password is incorrect, try again!");
+                return "user/login";
+            }
         }
     }
 

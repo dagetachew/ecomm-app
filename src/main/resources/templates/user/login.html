@@ -37,18 +37,18 @@
                                     <div class="form-floating mb-3">
                                         <input type="email" th:field="${userLoginDto.email}" class="form-control" id="floatingInputEmail" required placeholder="name@example.com">
                                         <label for="floatingInputEmail">Email:</label>
-                                        <p th:if="${#fields.hasErrors('email')}" th:errorclass="text-danger" th:errors="${userLoginDto.email}"></p>
                                     </div>
+                                    <p th:if="${#fields.hasErrors('email')}" th:errorclass="text-danger" th:errors="${userLoginDto.email}"></p>
                                     <div class="input-group mb-3">
                                         <div class="form-floating flex-grow-1">
                                             <input type="password" th:field="${userLoginDto.password}" class="form-control" id="passwordTxt" required placeholder="Password">
                                             <label for="passwordTxt">Password:</label>
-                                            <p th:if="${#fields.hasErrors('password')}" th:errorclass="text-danger" th:errors="${userLoginDto.password}"></p>
                                         </div>
                                         <button class="btn btn-outline-secondary" type="button" id="togglePassword" >
                                             <i class="bi bi-eye"></i> <!-- Bootstrap Icon for eye -->
                                         </button>
                                     </div>
+                                    <p th:if="${#fields.hasErrors('password')}" th:errorclass="text-danger" th:errors="${userLoginDto.password}"></p>
                                     <div class="d-grid ">
                                         <div class="text-center my-4 ">
                                             <button class="btn btn-secondary btn-login fw-bold btn-block col-md-5 mt-auto" type="submit">Login</button>
