@@ -54,13 +54,21 @@ public class UserController {
         else {
             if (userService.validateUserCredential(userLoginDto)) {
                 log.info("Login Succeeded");
-                return "redirect:/products";
+                return "user/myaccount";
+//                return "redirect:/products";
             }
             else {
                 bindingResult.rejectValue("password", "wrongCredential", "Either your email or password is incorrect, try again!");
                 return "user/login";
             }
         }
+    }
+
+    @GetMapping("/myaccount")
+    public String userProfile(Model model) {
+        UserDto userDto = new UserDto();
+        model.addAttribute("userDto", userDto);
+        return "user/myaccount";
     }
 
 }
