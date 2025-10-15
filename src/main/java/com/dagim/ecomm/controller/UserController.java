@@ -48,16 +48,16 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String loginUser(@Valid @ModelAttribute UserLoginDto userLoginDto, BindingResult bindingResult) {
+    public String loginUser(@Valid @ModelAttribute UserLoginDto userLoginDto, Model model, BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return "user/login";
         else {
             if (userService.validateUserCredential(userLoginDto)) {
                 log.info("Login Succeeded");
+                model.addAttribute("userDto", userService.findUserByEmail(userLoginDto.getEmail()));
                 return "user/myaccount";
 //                return "redirect:/products";
-            }
-            else {
+            } else {
                 bindingResult.rejectValue("password", "wrongCredential", "Either your email or password is incorrect, try again!");
                 return "user/login";
             }

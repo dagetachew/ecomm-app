@@ -10839,7 +10839,7 @@ body{
 }
 
 .ui-w-80 {
-    width: 80px !important;
+    width: 40px !important;
     height: auto;
 }
 
@@ -10932,5 +10932,7 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
     padding: 0.85rem 1.5rem;
     border-color: rgba(24,28,33,0.03) !important;
 }
-
+.nav-pills .nav-link.active {
+  background-color: black;
+  color: #fff;
 }
