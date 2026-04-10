@@ -9,13 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
-@Controller
+@RestController
 @RequestMapping(path = {"/user"})
 public class UserController {
 
@@ -58,7 +55,7 @@ public class UserController {
                 return "user/myaccount";
 //                return "redirect:/products";
             } else {
-                bindingResult.rejectValue("password", "wrongCredential", "Either your email or password is incorrect, try again!");
+                bindingResult.rejectValue("password", "wrongCredential", "Either the email or password provided is incorrect!");
                 return "user/login";
             }
         }
