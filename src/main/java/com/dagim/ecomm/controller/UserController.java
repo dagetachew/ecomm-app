@@ -6,10 +6,10 @@ import com.dagim.ecomm.service.UserService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @Slf4j
 @RestController
@@ -20,52 +20,52 @@ public class UserController {
     private UserService userService;
 
     @GetMapping(path = {"", "/"})
-    public String signupUser(Model model) {
+    public ModelAndView signupUser(Model model) {
 
         UserDto userDto = new UserDto();
         model.addAttribute("userDto", userDto);
-        return "user/signup";
+        return new ModelAndView("user/signup");
     }
 
     @PostMapping(path = {"", "/"})
-    public String createUser(@Valid @ModelAttribute UserDto userDto, BindingResult bindingResult) {
+    public ModelAndView createUser(@Valid @ModelAttribute UserDto userDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "user/signup";
+            return new ModelAndView("user/signup");
         } else {
             userService.createUserProfile(userDto);
-            return "redirect:user/login";
+            return new ModelAndView("redirect:user/login");
         }
     }
 
     @GetMapping("/login")
-    public String loginUser(Model model) {
+    public ModelAndView loginUser(Model model) {
         UserLoginDto userLoginDto = new UserLoginDto();
         model.addAttribute("userLoginDto", userLoginDto);
-        return "user/login";
+        return new ModelAndView("user/login");
     }
 
     @PostMapping("/login")
-    public String loginUser(@Valid @ModelAttribute UserLoginDto userLoginDto, Model model, BindingResult bindingResult) {
+    public ModelAndView loginUser(@Valid @ModelAttribute UserLoginDto userLoginDto, Model model, BindingResult bindingResult) {
         if (bindingResult.hasErrors())
-            return "user/login";
+            return new ModelAndView("user/login");
         else {
             if (userService.validateUserCredential(userLoginDto)) {
                 log.info("Login Succeeded");
                 model.addAttribute("userDto", userService.findUserByEmail(userLoginDto.getEmail()));
-                return "user/myaccount";
+                return new ModelAndView("user/myaccount");
 //                return "redirect:/products";
             } else {
                 bindingResult.rejectValue("password", "wrongCredential", "Either the email or password provided is incorrect!");
-                return "user/login";
+                return new ModelAndView("user/login");
             }
         }
     }
 
     @GetMapping("/myaccount")
-    public String userProfile(Model model) {
+    public ModelAndView userProfile(Model model) {
         UserDto userDto = new UserDto();
         model.addAttribute("userDto", userDto);
-        return "user/myaccount";
+        return new ModelAndView("user/myaccount");
     }
 
 }
