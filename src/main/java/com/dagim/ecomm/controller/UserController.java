@@ -6,13 +6,17 @@ import com.dagim.ecomm.service.UserService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Slf4j
-@RestController
+@Controller
 @RequestMapping(path = {"/user"})
 public class UserController {
 
@@ -20,20 +24,20 @@ public class UserController {
     private UserService userService;
 
     @GetMapping(path = {"", "/"})
-    public ModelAndView signupUser(Model model) {
+    public String signupUser(Model model) {
 
         UserDto userDto = new UserDto();
         model.addAttribute("userDto", userDto);
-        return new ModelAndView("user/signup");
+        return "user/signup";
     }
 
     @PostMapping(path = {"", "/"})
-    public ModelAndView createUser(@Valid @ModelAttribute UserDto userDto, BindingResult bindingResult) {
+    public String createUser(@Valid @ModelAttribute UserDto userDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return new ModelAndView("user/signup");
+            return "user/signup";
         } else {
             userService.createUserProfile(userDto);
-            return new ModelAndView("redirect:user/login");
+            return "redirect:user/login";
         }
     }
 
